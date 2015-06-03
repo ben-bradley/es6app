@@ -33,4 +33,4 @@ function build(file) {
     .pipe(gulp.dest('dist'))
 }
 
-gulp.task('default', ['build', 'watch'], monitor)
+gulp.task('default', ['watch'], monitor)

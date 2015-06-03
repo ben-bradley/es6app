@@ -1,17 +1,21 @@
 'use strict';
 
-var config = require('config');
+var config = require('config'),
+    q = require('q');
 
-var bar = require('./bar');
+var foo = require('./foo');
 
-var foo = function foo() {
+var Promise = Promise || q.Promise;
+
+var promise = function promise() {
   return Promise(function (resolve, reject) {
-    resolve(bar);
+    resolve(foo);
   });
 };
 
-foo().then(function (bar) {
-  console.log('bar = ' + bar);
+promise().then(function (foo) {
+  console.log('bar = ' + foo.bar);
+  console.log('baz = ' + foo.baz);
 })['catch'](function (err) {
   console.log('uhoh...');
 });
